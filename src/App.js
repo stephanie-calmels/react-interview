@@ -1,6 +1,16 @@
-import './App.css';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-function App() {
+import './App.css';
+import { getMovies } from './actions/movie';
+
+function App({ getMovies }) {
+  useEffect(() => {
+    getMovies();
+  },
+  // eslint-disable-next-line
+  []);
+
   return (
     <div className="App">
 
@@ -8,4 +18,13 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps= (state) => ({
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getMovies: () => {
+    dispatch(getMovies());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
