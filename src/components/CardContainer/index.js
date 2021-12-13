@@ -13,7 +13,7 @@ const CardContainer = ({ children }) => {
 };
 
 CardContainer.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.arrayOf(PropTypes.object,),
 };
 
 export default CardContainer;

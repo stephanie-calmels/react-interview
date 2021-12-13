@@ -25,6 +25,7 @@ function App({ getMovies, movies }) {
               category={movie.category}
               likes={movie.likes}
               dislikes={movie.dislikes}
+              id={movie.id}
             />   
           ))
         }

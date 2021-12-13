@@ -1,5 +1,5 @@
-import { getMoviesSuccess } from '../actions/movie';
-import { GET_MOVIES } from '../actions/types';
+import { getMoviesSuccess, deleteMovieSuccess } from '../actions/movie';
+import { GET_MOVIES, DELETE_MOVIE } from '../actions/types';
 
 import { movies$ } from '../movies';
 
@@ -13,6 +13,19 @@ const api = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(`Une erreur s'est produite : ${error}`);
         })
+      break;
+    }
+
+    case DELETE_MOVIE: {
+      movies$
+        .then((response) => {
+          const movieToDelete = response.find(movie => movie.id === action.id);
+          store.dispatch(deleteMovieSuccess(movieToDelete));
+        })        
+        .catch((error) => {
+          console.log(`Une erreur s'est produite : ${error}`);
+        })
+
       break;
     }
 
