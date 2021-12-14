@@ -9,8 +9,11 @@ import styles from './card.module.css';
 
 import { deleteMovie } from '../../actions/movie';
 
+import ToggleThumbs from '../ToggleThumbs';
+
 const Card = ({ title, category, likes, dislikes, id, deleteMovie }) => {
   const barWidth = likes / (likes + dislikes) * 100;
+
   return (
     <div className={styles['card']}>
       <p className={styles['title']}>{title}</p>
@@ -34,6 +37,7 @@ const Card = ({ title, category, likes, dislikes, id, deleteMovie }) => {
         />
         {dislikes}
       </p>
+      <ToggleThumbs id={id}/>
       <p className={styles['delete_button']}>
         <FontAwesomeIcon 
           icon={faTrashAlt} 
@@ -42,6 +46,7 @@ const Card = ({ title, category, likes, dislikes, id, deleteMovie }) => {
           onClick={() => deleteMovie(id)}
         />
       </p>
+
     </div>
   );
 };

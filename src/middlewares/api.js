@@ -1,5 +1,5 @@
-import { getMoviesSuccess, deleteMovieSuccess } from '../actions/movie';
-import { GET_MOVIES, DELETE_MOVIE } from '../actions/types';
+import { getMoviesSuccess, deleteMovieSuccess, updateLikes } from '../actions/movie';
+import { GET_MOVIES, DELETE_MOVIE, ADD_LIKE, ADD_DISLIKE } from '../actions/types';
 
 import { movies$ } from '../movies';
 
@@ -28,6 +28,41 @@ const api = (store) => (next) => (action) => {
 
       break;
     }
+
+    case ADD_LIKE: {
+      movies$
+        .then((response) => {
+          let movieToLike = response.find(movie => movie.id === action.id);
+          movieToLike.likes += 1;
+          if (action.note) {
+            movieToLike.dislikes -= 1;
+          }
+          store.dispatch(updateLikes(movieToLike));
+        })        
+        .catch((error) => {
+          console.log(`Une erreur s'est produite : ${error}`);
+        })
+
+      break;
+    }
+
+    case ADD_DISLIKE: {
+      movies$
+        .then((response) => {
+          let movieToDislike = response.find(movie => movie.id === action.id);
+          movieToDislike.dislikes += 1;
+          if (action.note) {
+            movieToDislike.likes -= 1;
+          }
+          store.dispatch(updateLikes(movieToDislike));
+        })        
+        .catch((error) => {
+          console.log(`Une erreur s'est produite : ${error}`);
+        })
+
+      break;
+    }
+
 
     default: 
     next(action);
