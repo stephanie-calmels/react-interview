@@ -6,8 +6,9 @@ import { getMovies } from './actions/movie';
 
 import CardContainer from './components/CardContainer';
 import Card from './components/Card';
+import Categories from './components/Categories';
 
-function App({ getMovies, movies }) {
+function App({ getMovies, movies, filteredMovies }) {
   useEffect(() => {
     getMovies();
   },
@@ -16,8 +17,22 @@ function App({ getMovies, movies }) {
 
   return (
     <div className="App">
+      <Categories />
       <CardContainer>
-        { movies.length > 0 && 
+        { 
+          filteredMovies.length > 0 ?
+            filteredMovies.map(movie => (
+              <Card
+                key={movie.id}
+                title={movie.title}
+                category={movie.category}
+                likes={movie.likes}
+                dislikes={movie.dislikes}
+                id={movie.id}
+              />   
+            )) 
+          :
+          movies.length > 0 && 
           movies.map(movie => (
             <Card
               key={movie.id}
@@ -27,7 +42,7 @@ function App({ getMovies, movies }) {
               dislikes={movie.dislikes}
               id={movie.id}
             />   
-          ))
+          )) 
         }
       </CardContainer>
     </div>
@@ -35,7 +50,8 @@ function App({ getMovies, movies }) {
 }
 
 const mapStateToProps= (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  filteredMovies: state.filteredMovies
 });
 
 const mapDispatchToProps = (dispatch) => ({

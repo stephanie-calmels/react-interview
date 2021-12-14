@@ -1,0 +1,19 @@
+.container {
+    grid-column: 2 / span 10;
+    grid-row: 1 / 2;
+    margin-bottom: 2rem;
+}
+
+.list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    list-style-type: none;
+    display: flex;
+}
+
+.category {
+    padding-left: 0.5rem;
+}
