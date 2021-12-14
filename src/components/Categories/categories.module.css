@@ -14,6 +14,12 @@
     display: flex;
 }
 
+.item input {
+    cursor: pointer;
+}
+
 .category {
     padding-left: 0.5rem;
+    color: white;
+    font-style: italic;
 }

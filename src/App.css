@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 3fr;
-  margin: 1.5rem 2rem;
+  margin: 0 2rem;
 }
 
 .paging {
@@ -16,9 +16,20 @@
 
 .button {
   margin: 1rem;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.75);
+  border: none;
+
 }
 
 .items {
   display: flex;
   align-items: center;
+}
+
+.items input {
+  cursor: pointer;
 }
