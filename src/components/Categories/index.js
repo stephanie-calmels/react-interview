@@ -8,7 +8,7 @@ import styles from './categories.module.css';
 import { getMoviesByCategories } from '../../actions/movie';
 
 const Categories = ( { categories, getMoviesByCategories } ) => {
-  let selectedCategories = [];
+  let selectedCategories = [...categories];
 
   const getSelected = (category) => {
     let found = selectedCategories.find(item => item === category);
@@ -31,6 +31,7 @@ const Categories = ( { categories, getMoviesByCategories } ) => {
                 type="checkbox" 
                 name={category} 
                 value={category}
+                defaultChecked
                 onChange={() => getSelected(category)}
               />
               <p className={styles['category']}>{category}</p>

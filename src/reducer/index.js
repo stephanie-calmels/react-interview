@@ -18,10 +18,11 @@ const reducer = (oldState = initialState, action) => {
 
     case DELETE_MOVIE_SUCCESS: 
       const moviesToKeep = currentState.movies.filter(movie => movie.id !== action.data.id);
-      
+
       return {
         ...oldState,
-        movies: moviesToKeep
+        movies: moviesToKeep,
+        filteredMovies: moviesToKeep
       }
 
     case UPDATE_LIKES: 
