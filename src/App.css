@@ -1,6 +1,24 @@
 .App {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr;
-  margin-top: 5rem;
+  grid-template-rows: 3fr;
+  margin: 1.5rem 2rem;
+}
+
+.paging {
+  grid-column: 2 / span 10;
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.button {
+  margin: 1rem;
+}
+
+.items {
+  display: flex;
+  align-items: center;
 }
