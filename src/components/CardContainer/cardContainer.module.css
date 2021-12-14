@@ -1,5 +1,5 @@
 .container {
-  grid-column: 2 / span 10;
+  grid-column: 3 / span 8;
   grid-row: 2 / 3;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 250px));

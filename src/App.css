@@ -6,7 +6,7 @@
 }
 
 .paging {
-  grid-column: 2 / span 10;
+  grid-column: 3 / span 8;
   grid-row: 3 / 4;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,8 @@
 .items {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .items input {
